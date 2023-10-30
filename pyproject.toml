@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aws_resource_scanner"
+description = "Check AWS resources for compliance"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "boto3",
+    "pyyaml",
+]
+version = "0.0.1"
+
+[project.scripts]
+my-script = "aws_resource_scanner.__main__:main"
+
+[tool.ruff]
+line-length = 120
+
+[tool.mypy]
+strict = true
+
+[tool.black]
+line-length = 120
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"

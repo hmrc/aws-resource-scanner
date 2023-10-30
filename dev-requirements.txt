@@ -1,0 +1,7 @@
+pytest
+mypy
+moto[all]
+types-boto3
+ruff
+black
+isort
