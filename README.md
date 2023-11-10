@@ -4,18 +4,18 @@ This tool is used to scan AWS resources and generate a report.
 When executed it will check for violations of any rules defined in the
 `checks` directory.
 
-This of it like AWS Config checks, but better and cheaper.
+Think of it like AWS Config checks, but better and cheaper.
 
 ## Rules
 
-Rules are classes that conform to the Rule protocol. They have the following attributes:
+Rules are data classes that conform to the Rule protocol. They have the following attributes:
 - description: A description of the rule
 - severity: High, Medium or Low
 - recommendation: A recommendation for resolving any violations
 
 ## Checks
 
-Checks are defined in the `rules` directory. Each module in this directory
+Checks are defined in the `checks` directory. Each module in this directory
 is loaded and if it contains a `check` function it will be executed.
 
 The `check` function takes a `boto3` session as it's only argument. The function can
@@ -44,3 +44,9 @@ The exclusion rule value may be:
 - A list of regexes, one of which must match against that attribute of the resource.
 - A nested map, the contents of which must match the nested field in the resource.
 
+An example exclusions file:
+
+```yaml
+MissingPermissionBoundary:
+  - RoleName: AWSServiceRole.*
+```
